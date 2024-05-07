@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import Boards from "./component/boards/Boards";
+import ToggleThemeBtn from "./theme/ToggleThemeBtn";
+import MyBoards from "./component/myBoards/MyBoards";
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <ul>
+        <li>
+          <Link to={"/Lectureboards"}>보드</Link>
+        </li>
+        <li>
+          <Link to={"/myBoard"}>내가만든Board</Link>
+        </li>
+        <li>
+        </li>
+      </ul>
+      <Routes>
+        <Route path="/Lectureboards" element={<Boards />}/>
+        <Route path="/myBoard" element={<MyBoards />}/>
+      </Routes>
+      <ToggleThemeBtn />
+    </BrowserRouter>
   );
 }
 
